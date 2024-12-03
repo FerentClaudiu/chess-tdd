@@ -44,8 +44,32 @@ public class Pawn {
     }
 
     public void move(MovementType movementType, int newX, int newY) {
-        throw new UnsupportedOperationException("Need to implement Pawn.move()") ;
+        //verfica daca mutarea este permisa si daca pozitia pe tabla este legala
+        if(movementType !=MovementType.MOVE || chessBoard.isLegalBoardPosition(newX,newY)){
+            return;}
+
+        //variabila care arata daca mutarea este valida
+        boolean isMoveValid= false;
+
+        //verifica mutarea in functie de culoare
+        if(pieceColor ==PieceColor.BLACK) {
+            //piesa negra se muta doar o pozitie in jos -1
+            isMoveValid = (newX == xCoordinate && newY == yCoordinate - 1);
+        }else if (pieceColor ==PieceColor.WHITE){
+            //piesa alba se poate muta doar o pozitie +1
+            } else if (pieceColor == PieceColor.WHITE) {
+            isMoveValid = (newX == xCoordinate && newY == yCoordinate + 1);
+        }
+
+        //daca mutarea este valida , se actualizeaza coordonatele
+        if(isMoveValid){
+           setXCoordinate(newX);
+           setYCoordinate(newY);
+        }
+
     }
+
+
 
     @Override
     public String toString() {
