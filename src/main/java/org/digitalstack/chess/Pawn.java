@@ -45,7 +45,7 @@ public class Pawn {
 
     public void move(MovementType movementType, int newX, int newY) {
         //verfica daca mutarea este permisa si daca pozitia pe tabla este legala
-        if(movementType !=MovementType.MOVE || chessBoard.isLegalBoardPosition(newX,newY)){
+        if(movementType !=MovementType.MOVE || !chessBoard.isLegalBoardPosition(newX,newY)){
             return;}
 
         //variabila care arata daca mutarea este valida
